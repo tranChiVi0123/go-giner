@@ -15,6 +15,9 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "hello go-gin"})
 	})
 
+	public := router.Group("/api")
+	public.POST("/register", controllers.Register)
+	public.POST("/login", controllers.Login)
 	models.ConnectDatabase()
 
 	router.GET("/books", controllers.FindBooks)
